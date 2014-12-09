@@ -1,9 +1,6 @@
 <?php 
 
-$ip_db_inc="";
-$user_db_inc="";
-$pwd_db_inc="";
-$name_db_inc="";
+include_once 'setup.inc';
 
 function db_connect($ch=0)
 {
@@ -21,7 +18,7 @@ function db_connect($ch=0)
 	$connessione=@mysql_connect($ip_db_inc, $user_db_inc,$pwd_db_inc);
 
 	//workaraund per salvare caratteri UTF-8 in DB
-	//è preferibile utilizzare mysql_set_charset (PHP 5 >= 5.2.3)
+	//�� preferibile utilizzare mysql_set_charset (PHP 5 >= 5.2.3)
 	qdb("SET NAMES 'utf8'");
 	//----------------------
 
