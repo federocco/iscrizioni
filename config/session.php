@@ -10,7 +10,7 @@ if (!isset($_SESSION))
 	if (isset($_REQUEST["ckLog"]))
 	{
 		
-		connessionedb();
+		db_connect();
 		
 		$user = $_REQUEST["ckLogU"];
 		$pwd = $_REQUEST["ckLogP"];
@@ -41,6 +41,6 @@ if (!isset($_SESSION))
 else
 {
 	$_SESSION['script_url'] = $_SERVER["HTTP_HOST"].$_SERVER["PHP_SELF"];
-	connessionedb();
+	db_connect();
 }
 ?>

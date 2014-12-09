@@ -1,11 +1,11 @@
 <?php 
-// set_time_limit — Limits the maximum execution time
+// set_time_limit ��� Limits the maximum execution time
 set_time_limit(0); //no time limit
 
 include("../config/database.lib.php");
 
 //connessione al DATABASE
-connessionedb();
+db_connect();
 
 function change_date_format ($date)
 {
@@ -61,7 +61,7 @@ function import_iscritti($filename,$import_annualita)
 					
 					$id_iscritto = result($result_exists,0,"id");
 						
-					$log_record = "[" . date ( "H:i:s" ) . "] Iscritto ".$nome." ".$cognome." già presente con codice: $id_iscritto";
+					$log_record = "[" . date ( "H:i:s" ) . "] Iscritto ".$nome." ".$cognome." gi�� presente con codice: $id_iscritto";
 					fwrite ( $handle_log, $log_record . "\n" );
 					print $log_record . "<br>";
 					
