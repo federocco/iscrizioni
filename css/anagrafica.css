@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+#dialog_gestione_iscritto {
+	display: none;
+	text-align: left; 
+	min-width: 250px;
+}
+
+.dialog_iscritto_container div {
+	margin-bottom: 0.4em;
+}	
+.dialog_iscritto_container label {
+	margin-right: 1em;
+	width: 9em;
+}
+.dialog_iscritto_container button {
+	float: right;
+	margin-top: 0.5em;
+}
+
+#iscritto_dettagli {
+	float: left;
+    padding: 1em;
+}
+
+#iscritto_dettagli div {
+	margin-bottom: 0.4em;
+}
+
+#iscritto_dettagli label {
+	margin-right: 1em;
+	width: 9em;
+}
+
+#iscritto_storico {
+	float: left;
+    padding-left: 1em;
+    width: 420px;
+}
+
+.tabella_iscrizioni{
+	padding: 1em 0 1em ;
+}
+
+#dati_add_iscrizione {
+	display: none;
+	padding: 1em;
+}
+
+#dati_add_iscrizione label {
+	margin-right: 1em;
+	width: 9em;
+}
+
+#dati_add_iscrizione div {
+	margin-bottom: 0.4em;
+}
