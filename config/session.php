@@ -32,11 +32,12 @@ if (!isset($_SESSION))
 			exit;
 		}
 	}
-	else
-	{
-		echo "<a href=\"index.php\">Sessione scaduta: effettua un nuovo login!</a>";
-		exit;
-	}
+}
+
+if (!isset($_SESSION))
+{
+	echo "<a href=\"index.php\">Sessione scaduta: effettua un nuovo login!</a>";
+	exit;
 }
 else
 {
