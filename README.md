@@ -1,3 +1,3 @@
 iscrizioni
 ==========
-Gestione di una anagrafica utente con la possibilità di effettuare delle iscrizioni annuali.
+Gestione anagrafica utenti con la possibilità di aggiungere iscrizioni annuali.
