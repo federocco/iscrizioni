@@ -150,7 +150,7 @@ var gestioneIscritto = {
 	resetData: function() {
 		$("#dialog_gestione_iscritto input[type=text]").val("");
 		$('#gestione_iscritto_salva').removeAttr("data-idiscritto");
-		//$('#dati_add_iscrizione').hide();
+		$('#dati_add_iscrizione').hide();
 		$("#tabella_iscrizioni tbody").html("");
 	},
 

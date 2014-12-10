@@ -33,7 +33,7 @@ include 'config/session.php';
 <div class="container">
     <div class="row">
 	    <h3>Iscrizioni A.S.D. Biciverde</h3>
-	    <h4>Cod. Società 06PD077</h4>
+	    <h4>Cod. Societetà 06PD077</h4>
     </div>
     <div class="row">
     <p>
