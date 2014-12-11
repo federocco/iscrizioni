@@ -9,6 +9,8 @@ class Annuale {
 	public $tessera;
 	public $pagato;
 	public $anno;
+	public $scadenza_tessera;
+	public $scadenza_visita;
 		
 
 	public static function getAllIscrizioniById($idutente) {
@@ -45,7 +47,9 @@ class Annuale {
 		$data->tessera = $record["tessera"];
 		$data->anno = $record["anno"];
 		$data->pagato = $record["pagato"];
-			
+		$data->scadenza_tessera = $record["scadenza_tessera"];
+		$data->scadenza_visita = $record["scadenza_visita"];
+
 		return $data;
 	}
 	
@@ -76,6 +80,8 @@ class Annuale {
 		$saveQuery .= ", anno = '".mysql_real_escape_string($this->anno)."'";
 		$saveQuery .= ", fk_idiscritto = '".mysql_real_escape_string($this->fk_idiscritto)."'";
 		$saveQuery .= ", pagato = '".mysql_real_escape_string($this->pagato)."'";
+		$saveQuery .= ", scadenza_tessera = '".mysql_real_escape_string($this->scadenza_tessera)."'";
+		$saveQuery .= ", scadenza_visita = '".mysql_real_escape_string($this->scadenza_visita)."'";	
 		$saveQuery .= ", user_op = ".$_SESSION["idutente"];
 					
 		if ($isUpdate)

@@ -55,3 +55,12 @@
 #dati_add_iscrizione div {
 	margin-bottom: 0.4em;
 }
+
+.starter-element{
+	padding: 5px 15px;
+}
+
+.iscrizione-linkcode{
+	color: #337ab7 !important;
+	text-decoration: underline !important;
+}

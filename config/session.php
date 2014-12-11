@@ -3,7 +3,7 @@
 ob_start();
 include_once 'database.lib.php';
 
-if (!isset($_SESSION))
+if (!isset($_SESSION["logged"]))
 {
 	session_start();
 	
@@ -34,7 +34,7 @@ if (!isset($_SESSION))
 	}
 }
 
-if (!isset($_SESSION))
+if (!isset($_SESSION["logged"]))
 {
 	echo "<a href=\"index.php\">Sessione scaduta: effettua un nuovo login!</a>";
 	exit;

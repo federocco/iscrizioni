@@ -1,3 +1,9 @@
+<?php
+	session_start(); //to ensure you are using same session
+	session_destroy(); //destroy the session
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
 
 <title>Accesso riservato</title>
 
@@ -23,8 +28,8 @@
     <![endif]-->
 
 <script src="libs/jquery/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="libs/jquery-ui/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="libs/jqueryuibootstrap/jquery-ui-1.9.2.custom.css" />
+<script type="text/javascript" src="libs/jquery/ui/js/jquery-ui-1.9.2.custom.min.js"></script>
+<link rel="stylesheet" href="libs/bootstrap/jqueryuibootstrap/jquery-ui-1.9.2.custom.css" />
 <script src="js/index.js"></script>
 
 </head>

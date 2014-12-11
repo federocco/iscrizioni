@@ -14,12 +14,11 @@ class Anagrafica {
 	public $cap;
 	public $comune;
 	public $prov;
+	public $telefono;
+	public $cellulare;
+	public $email;
 	
 	public $listaIscrizioni;
-	
-	public $new_tessera;
-	public $new_anno;
-	public $new_pagato;
 
 	/**
 	 * @param $id l'anagrafica utente di cui caricare i dati.
@@ -76,6 +75,9 @@ class Anagrafica {
 		$data->cap = $record["cap"];
 		$data->comune = $record["comune"];
 		$data->prov = $record["prov"];
+		$data->telefono = $record["telefono"];
+		$data->cellulare = $record["cellulare"];
+		$data->email = $record["email"];
 		
 		return $data;
 	}
@@ -118,6 +120,9 @@ class Anagrafica {
 		$saveQuery .= ", cap = ".(!empty($this->cap) ? "'".mysql_real_escape_string($this->cap)."'" : "NULL");
 		$saveQuery .= ", comune = ".(!empty($this->comune) ? "'".mysql_real_escape_string($this->comune)."'" : "NULL");
 		$saveQuery .= ", prov = ".(!empty($this->prov) ? "'".mysql_real_escape_string($this->prov)."'" : "NULL");
+		$saveQuery .= ", telefono = ".(!empty($this->telefono) ? "'".mysql_real_escape_string($this->telefono)."'" : "NULL");
+		$saveQuery .= ", cellulare = ".(!empty($this->cellulare) ? "'".mysql_real_escape_string($this->cellulare)."'" : "NULL");
+		$saveQuery .= ", email = ".(!empty($this->email) ? "'".mysql_real_escape_string($this->email)."'" : "NULL");
 		$saveQuery .= ", user_op = ".$_SESSION["idutente"];
 		
 							
@@ -131,17 +136,20 @@ class Anagrafica {
 			if (!$isUpdate)
 				$this->id = mysql_insert_id();
 			
-			if (!is_null($this->new_tessera) || !is_null($this->new_anno))
-			{
-				$annualeToSave = new Annuale();
-				$annualeToSave->tessera = $this->new_tessera;
-				$annualeToSave->anno = $this->new_anno;
-				$annualeToSave->fk_idiscritto = $this->id;
-				$annualeToSave->pagato = $this->new_pagato;
+// 			if (!is_null($this->new_anno)) //!is_null($this->new_tessera) ||
+// 			{
+// 				$annualeToSave = new Annuale();
+// 				$annualeToSave->id = $this->idIscrizione; //potrebbe essere nullo in caso di nuovo iscrizione
+// 				$annualeToSave->tessera = $this->new_tessera;
+// 				$annualeToSave->anno = $this->new_anno;
+// 				$annualeToSave->fk_idiscritto = $this->id;
+// 				$annualeToSave->pagato = $this->new_pagato;
+// 				$annualeToSave->scadenza_tessera = $this->new_scadenza_tessera;
+// 				$annualeToSave->scadenza_visita = $this->new_scadenza_visita;
 				
-				if (!$annualeToSave->save())
-					$opResult = false;
-			} 
+// 				if (!$annualeToSave->save())
+// 					$opResult = false;
+// 			} 
 		}
 		return $opResult;
 	}

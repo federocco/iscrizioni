@@ -32,7 +32,7 @@ if (isset($_REQUEST["saveIscritto"])) {
 	$iscrittoid = null;
 	if (array_key_exists("id", $iscritto))
 		$iscrittoid = $iscritto["id"];
-	
+		
 	$iscrittoToSave = null;
 	
 	if (!is_null($iscrittoid))
@@ -64,18 +64,53 @@ if (isset($_REQUEST["saveIscritto"])) {
 	if (array_key_exists("prov", $iscritto))
 		$iscrittoToSave->prov = $iscritto["prov"];
 	
-	if (array_key_exists("tessera", $iscritto))
-		$iscrittoToSave->new_tessera = $iscritto["tessera"];
+	if (array_key_exists("telefono", $iscritto))
+		$iscrittoToSave->telefono = $iscritto["telefono"];
 	
-	if (array_key_exists("anno", $iscritto))
-		$iscrittoToSave->new_anno = $iscritto["anno"];
+	if (array_key_exists("cellulare", $iscritto))
+		$iscrittoToSave->cellulare = $iscritto["cellulare"];
 	
-	if (array_key_exists("pagato", $iscritto))
-		$iscrittoToSave->new_pagato = $iscritto["pagato"];
+	if (array_key_exists("email", $iscritto))
+		$iscrittoToSave->email = $iscritto["email"];
+	
+	/*
+	 * 
+	 * */
+	
 	
 	$res = new StdClass();
 	$saveResult = $iscrittoToSave->save();
 	if ($saveResult) {
+		
+		if (isset($iscritto["anno"])) //!is_null($this->new_tessera) ||
+		{
+			$annualeToSave = new Annuale();
+			if (array_key_exists("tessera", $iscritto))
+				$annualeToSave->tessera = $iscritto["tessera"];
+			
+			if (array_key_exists("anno", $iscritto))
+				$annualeToSave->anno = $iscritto["anno"];
+			
+			if (array_key_exists("pagato", $iscritto))
+				$annualeToSave->pagato = $iscritto["pagato"];
+			
+			if (array_key_exists("scadenza_tessera", $iscritto))
+				$annualeToSave->scadenza_tessera = $iscritto["scadenza_tessera"];
+			
+			if (array_key_exists("scadenza_visita", $iscritto))
+				$annualeToSave->scadenza_visita = $iscritto["scadenza_visita"];
+			
+			if (array_key_exists("idIscrizione", $iscritto))
+				$annualeToSave->id = $iscritto["idIscrizione"];
+			
+			
+			$annualeToSave->fk_idiscritto = $iscrittoToSave->id;
+
+			
+			if (!$annualeToSave->save())
+				$opResult = false;
+		} 
+		
 		$res->result = "ok";
 	} else {
 		//errore durante salvataggio
