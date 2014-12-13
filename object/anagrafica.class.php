@@ -44,9 +44,13 @@ class Anagrafica {
 	/**
 	 * @return array di anagrafica
 	 */
-	public static function getDatiFromAnagrafica() {
+	public static function getDatiFromAnagrafica($anno=null) {
 
-		$getQuery = 'SELECT anagrafica.* FROM anagrafica';			
+		$getQuery = 'SELECT anagrafica.* FROM anagrafica';	
+
+		if ($anno != null)
+			$getQuery = "SELECT anagrafica.* FROM anagrafica INNER JOIN annuale ON anagrafica.id = annuale.fk_idiscritto WHERE annuale.anno = '$anno';"; 
+		
 		$getResult = qdb ( $getQuery );
 		
 		$iscritti = array ();

@@ -61,8 +61,8 @@ include 'config/session.php';
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-<!-- 					<li class="active"><a href="#">Home</a></li> -->
-<!-- 					<li><a href="#about">About</a></li> -->
+					<li class=""><a id="open_selezionaDati" href="#">Seleziona...</a></li>
+<!-- 					<li><a href="#about">Tutti</a></li> -->
 <!-- 					<li><a href="#contact">Contact</a></li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -133,7 +133,18 @@ include 'config/session.php';
 </div>
 <!-- /.container -->
 
+<div id="dialog_selezionaDati" title="Seleziona anno">
+<!-- 	<label>Anno</label><input type="text" id="selezionaDati_anno" /> -->
 
+	<select id="listaAnni"></select>
+	
+	<div>&nbsp;</div>
+	
+	<div>
+		<button id="selezionaDati_anno_carica" type="button"
+			class="btn btn-primary">Carica</button>
+	</div>
+</div>
 
 <div id="dialog_gestione_iscritto" title="Gestione iscritto">
 		<div id="iscritto_dettagli">

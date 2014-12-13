@@ -2,9 +2,20 @@
 include_once '../object/anagrafica.class.php';
 include_once '../config/session.php';
 
-if (isset($_REQUEST["loadData"])) {
+if (isset($_REQUEST["getListaAnni"]))
+{
+	$lista_anni = Annuale::getListaAnni();
+	
+	$jsonObj = new StdClass();
+	$jsonObj->result = "ok";
+	$jsonObj->anni = $lista_anni;
+	
+	print json_encode ( $jsonObj );
+}
 
-	$anagrafica = Anagrafica::getDatiFromAnagrafica();
+if (isset($_REQUEST["loadData"])) {
+		
+	$anagrafica = Anagrafica::getDatiFromAnagrafica($_REQUEST["loadData"]);
 	
 	$jsonObj = new StdClass();
 	$jsonObj->result = "ok";

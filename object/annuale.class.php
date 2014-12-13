@@ -12,7 +12,21 @@ class Annuale {
 	public $scadenza_tessera;
 	public $scadenza_visita;
 		
-
+	public static function getListaAnni()
+	{
+		$query = "SELECT COUNT(fk_idiscritto)AS iscritti, anno FROM annuale GROUP BY anno";
+		$result = qdb($query);
+		
+		$listaAnni = array();
+		
+		while($record = mysql_fetch_assoc($result)) {
+			$anno = self::getDatiListaAnni($record);
+			array_push($listaAnni, $anno);
+		}
+		
+		return $listaAnni;
+	}
+	
 	public static function getAllIscrizioniById($idutente) {
 		$getAllQuery = "
 			SELECT annuale.*
@@ -50,6 +64,14 @@ class Annuale {
 		$data->scadenza_tessera = $record["scadenza_tessera"];
 		$data->scadenza_visita = $record["scadenza_visita"];
 
+		return $data;
+	}
+	
+	private static function getDatiListaAnni($record) {
+		$data = new StdClass();
+		$data->iscritti = $record["iscritti"];
+		$data->anno = $record["anno"];
+		
 		return $data;
 	}
 	

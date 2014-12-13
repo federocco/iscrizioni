@@ -42,4 +42,6 @@ $(document).ready(function(){
 	
 	tableAnagrafica.loadData();	
 	gestioneIscritto.initialize();
+	
+	selezionaDati.initialize();
 });

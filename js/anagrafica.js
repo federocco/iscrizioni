@@ -47,12 +47,16 @@ var tableAnagrafica = {
 		});
 	},
 		
-	loadData : function(){
+	loadData : function(anno){
 		if (this.anagraficaTable == null)
 			this.initialize();
+		
+		var loadReq = null;
+		if (anno != null)
+			loadReq = anno;
 			
 		$.ajax({
-			data:{loadData:''},
+			data:{loadData:loadReq},
 			success: function(data) {tableAnagrafica.loadDataHandler(data.iscritti);
 			}
 		});
@@ -105,6 +109,68 @@ var tableAnagrafica = {
 			gestioneIscritto.openDialog(idutente);
 		});
 	}
+}
+
+var selezionaDati = {
+		initialize: function() {
+			$("#dialog_selezionaDati").dialog({
+				autoOpen : false,
+				height : "auto",
+				width : "auto",
+				buttons: null,
+				position : position,
+				modal : true,
+				resizable : false
+			});
+			
+//			$("#selezionaDati_anno").datepicker({
+//				dateFormat: "yy-mm-dd"
+//			});
+			
+			$('#open_selezionaDati').click(function(e) {
+				var listaAnni = selezionaDati.loadData();
+				
+				selezionaDati.openDialog(listaAnni);
+			});
+
+			$('#selezionaDati_anno_carica').click(function(e) {
+				var anno = $("#listaAnni option:selected").val();
+				tableAnagrafica.loadData(anno);
+				
+				$("#dialog_selezionaDati").dialog("close");
+			});
+		},
+		
+		openDialog: function(listaAnni){
+			
+			var htmlOptions = "";
+			htmlOptions += "<option value=\"\">Tutti gli iscritti</option>"
+
+			for (x in listaAnni)
+			{
+				htmlOptions += "<option value="+listaAnni[x].anno+">"+listaAnni[x].anno+" ("+listaAnni[x].iscritti+")</option>";
+			}
+			
+			$("#listaAnni").html(htmlOptions);
+			
+			$("#dialog_selezionaDati").dialog("open");
+		},
+		
+		loadData: function() {
+			var lista = null;
+			$.ajax({
+				async: false,
+				data : {
+					getListaAnni: ''
+				},
+				//complete: function(xhr){},
+				success: function(data) {
+					if ((typeof data.anni != "undefined") && (data.anni != null))
+						lista = data.anni;
+				}
+			});
+			return lista;
+		},
 }
 
 var gestioneIscritto = {
