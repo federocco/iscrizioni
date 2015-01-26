@@ -1,8 +1,8 @@
 <?php 
 
-$ip_db_inc="localhost";
-$user_db_inc="root";
-$pwd_db_inc="root";
-$name_db_inc="biciverde_iscrizioni";
+$ip_db_inc="localhost"; //db ip
+$user_db_inc="root"; //db username
+$pwd_db_inc="root"; //db password
+$name_db_inc="biciverde_iscrizioni"; //db name
 
 ?>
