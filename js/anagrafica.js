@@ -75,13 +75,13 @@ var tableAnagrafica = {
 		for (var i = 0, len = data.length; i < len; i++) {
 			var utente = data[i];
 						
-			var linkCodice = '<a class="iscritto-linkcode table-linkcode" href="#" data-idiscritto="'+utente.id+'">'+utente.id+'</a>';
+			//var linkCodice = '<a class="iscritto-linkcode table-linkcode" href="#" data-idiscritto="'+utente.id+'">'+utente.id+'</a>';
 			var linkNome = '<a class="iscritto-linkcode table-linkcode" href="#" data-idiscritto="'+utente.id+'">'+utente.nome+'</a>'
 			var linkCognome = '<a class="iscritto-linkcode table-linkcode" href="#" data-idiscritto="'+utente.id+'">'+utente.cognome+'</a>'
 			
 			var row = {
 				"DT_RowId": utente.id,
-				"0": linkCodice, 
+				"0": utente.id,
 				"1": linkNome,
 				"2": linkCognome,
 				"3": utente.data_nascita,
@@ -279,21 +279,22 @@ var gestioneIscritto = {
 
 	openDialog: function(id) {
 		var iscritto = null;
+		this.resetData();
+		
 		if (id != null)
 			iscritto = this.loadData(id);
 				
-		this.resetData();
-		
 		if (iscritto != null) {
 			//modifico esistente
 			this.loadIntoDialog(iscritto);
 			datiPersonaIscritta = iscritto;
+			$("#dialog_gestione_iscritto").dialog("open");
 		}
 //		else{
 //			//inserimento
 //		}
 		
-		$("#dialog_gestione_iscritto").dialog("open");
+		
 
 	},
 	

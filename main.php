@@ -15,6 +15,9 @@ include 'config/session.php';
 	<!-- Bootstrap core CSS -->
 	<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
+	<!-- Global styles -->
+	<link rel="stylesheet" href="css/global.css">
+	
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" href="css/anagrafica.css">
 	
@@ -35,9 +38,10 @@ include 'config/session.php';
 	<script charset="utf-8"	src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
 	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.3/css/jquery.dataTables.css"></link>
 	
-	<!-- My Own Javascript -->
+	<!-- My Javascript -->
 	<script src="js/anagrafica.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/dialog.js"></script>
 	
 	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -239,5 +243,12 @@ include 'config/session.php';
 			</div>
 		</div>
 	</div>
+	
+	<!-- Loading Dialog -->
+	<div id="loadingScreen"></div>
+	
+	<!-- Error Dialog -->
+	<div id="errorScreen"></div>
+	
 	</body>
 </html>

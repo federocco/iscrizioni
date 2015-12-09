@@ -5,8 +5,18 @@ $.ajaxSetup({
 	type:'POST',
 	url:'ajax/request.php',
 	dataType:'json',
-	error: function(xhr){console.log(xhr);}
-//	complete: function(xhr){console.log(xhr);}
+	error: function(xhr){
+		console.log(xhr);
+		var errorMsg = xhr.responseText + '<br/><br/>(' + xhr.getAllResponseHeaders() + ')';
+		errorDialog.open({title: 'Errore', message: errorMsg});
+	},
+	beforeSend: function(xhr) {
+		loadingDialog.open({title: 'Caricamento...', message: 'Attendere prego...'});
+	},
+	complete: function(xhr){
+		//console.log(xhr);
+		loadingDialog.close();
+	}
 });
 
 /**
@@ -39,6 +49,9 @@ if(tipo.toUpperCase()==="MSIE") {
 
 $(document).ready(function(){
 	//$("button").button();
+	
+	loadingDialog.initialize("#loadingScreen")
+	errorDialog.initialize("#errorScreen");
 	
 	tableAnagrafica.loadData();	
 	gestioneIscritto.initialize();
