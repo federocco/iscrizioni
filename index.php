@@ -39,7 +39,7 @@
 	<div class="container"  style="width:300px;" >
 
 		<div> 
-			<h2 class="form-signin-heading">Accesso riservato</h2>
+			<h2 class="form-signin-heading"><img src="css/images/asd_biciverde_logo.png"></h2>
 			<label for="inputEmail" class="sr-only">Indirizzo email</label> <input
 				type="email" id="inputEmail" class="form-control"
 				placeholder="Email address" required autofocus> <label

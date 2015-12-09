@@ -288,14 +288,12 @@ var gestioneIscritto = {
 			//modifico esistente
 			this.loadIntoDialog(iscritto);
 			datiPersonaIscritta = iscritto;
-			$("#dialog_gestione_iscritto").dialog("open");
 		}
 //		else{
 //			//inserimento
 //		}
 		
-		
-
+		$("#dialog_gestione_iscritto").dialog("open");
 	},
 	
 	loadIntoDialog: function(iscritto) {
