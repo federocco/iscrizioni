@@ -114,6 +114,7 @@ include 'config/session.php';
 				class="display">
 				<thead>
 					<tr>
+						<th>Iscrivi</th>
 						<th>ID</th>
 						<th>Nome</th>
 						<th>Cognome</th>

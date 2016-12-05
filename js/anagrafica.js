@@ -78,9 +78,11 @@ var tableAnagrafica = {
 			//var linkCodice = '<a class="iscritto-linkcode table-linkcode" href="#" data-idiscritto="'+utente.id+'">'+utente.id+'</a>';
 			var linkNome = '<a class="iscritto-linkcode table-linkcode" href="#" data-idiscritto="'+utente.id+'">'+utente.nome+'</a>'
 			var linkCognome = '<a class="iscritto-linkcode table-linkcode" href="#" data-idiscritto="'+utente.id+'">'+utente.cognome+'</a>'
+			var linkIscrittoAnnoDiretto = '<a class="iscritto-anno-diretto table-linkcode" href="#" data-idiscritto="'+utente.id+'">Iscrivi 2016</a>'
 			
 			var row = {
 				"DT_RowId": utente.id,
+				"12": linkIscrittoAnnoDiretto,
 				"0": utente.id,
 				"1": linkNome,
 				"2": linkCognome,
@@ -107,6 +109,11 @@ var tableAnagrafica = {
 		$("#tabellaUsers tbody").on('click','.iscritto-linkcode',function(event) {
 			var idutente = $(this).attr("data-idiscritto");
 			gestioneIscritto.openDialog(idutente);
+		});
+
+		$("#tabellaUsers tbody").on('click','.iscritto-anno-diretto',function(event) {
+			var idutente = $(this).attr("data-idiscritto");
+			gestioneIscritto.nuovaIscrizioneDiretta(idutente);
 		});
 	}
 }
@@ -378,6 +385,28 @@ var gestioneIscritto = {
 			}
 		});
 		return iscritto;
+	},
+
+	nuovaIscrizioneDiretta: function(idutente) {
+		if (idutente == null || idutente == "")
+			return;
+		
+		$.ajax({
+			async: false,
+			data : {
+				nuovaIscrizioneDiretta: idutente
+			},
+			//complete: function(xhr){},
+			success: function(data) {
+				if (data.result == "ok") {
+					$(".ui-state-highlight").show(0).delay(800).hide(0);					
+				} 
+				else
+				{
+					$(".ui-state-error").show(0).delay(800).hide(0);
+				}
+			}
+		});
 	},
 	
 	getDataFromDialog: function() {

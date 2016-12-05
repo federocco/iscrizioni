@@ -37,6 +37,24 @@ if (isset($_REQUEST["loadIscritto"])) {
 	print json_encode ( $jsonObj );
 }
 
+if (isset($_REQUEST["nuovaIscrizioneDiretta"])) {
+	
+	$res = new StdClass();
+	$iscrittoid = $_REQUEST["nuovaIscrizioneDiretta"];
+
+	$iscritto = Anagrafica::getDatiIscritto($iscrittoid);
+
+	$annualeToSave = new Annuale();
+	$annualeToSave->anno = '2016';
+	$annualeToSave->fk_idiscritto = $iscrittoid;
+	
+	$res->result = "ok";
+	if (!$annualeToSave->save()) 
+		$res->result = "error";
+
+	print json_encode($res);
+}
+
 if (isset($_REQUEST["saveIscritto"])) {
 	$iscritto = $_POST["iscritto"];
 	
